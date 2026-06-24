@@ -11,7 +11,7 @@
 **Küçük ve orta ölçekli şirketler için BT arıza takip ve yönetim uygulaması.**  
 Kullanıcılar arıza kaydı oluşturur, adminler tüm kayıtları yönetir.
 
-[Özellikler](#-özellikler) • [Kurulum](#-kurulum) • [Kullanım](#-kullanım) • [Ekran Görüntüleri](#-ekran-görüntüleri) • [Katkı](#-katkıda-bulunma)
+[Özellikler](#-özellikler) • [Kurulum](#-kurulum) • [Kullanım](#-kullanım)  • [Katkı](#-katkıda-bulunma)
 
 </div>
 
@@ -95,7 +95,6 @@ Pillow>=10.0.0
 psutil>=5.9.0       # Sistem bilgisi için (opsiyonel)
 ```
 ---
-[Ekran Görüntüleri](#-ekran-görüntüleri)
 https://i.hizliresim.com/79cbovz.png
 https://i.hizliresim.com/29s3g63.png
 ---
