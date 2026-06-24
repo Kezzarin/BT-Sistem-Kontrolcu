@@ -94,7 +94,10 @@ customtkinter>=5.2.2
 Pillow>=10.0.0
 psutil>=5.9.0       # Sistem bilgisi için (opsiyonel)
 ```
-
+---
+[Ekran Görüntüleri](#-ekran-görüntüleri)
+https://i.hizliresim.com/79cbovz.png
+https://i.hizliresim.com/29s3g63.png
 ---
 
 ## 🚀 Kurulum
@@ -141,7 +144,7 @@ Tüm şirket aynı veritabanını kullanabilir:
 
 **Adım 1:** Repoyu klonlayın:
 ```bash
-git clone https://github.com/kullanici-adi/bt-ariza-takip.git
+git clone https://github.com/kezzarin/bt-ariza-takip.git
 cd bt-ariza-takip
 ```
 
@@ -552,7 +555,8 @@ Sorularınız için: stajabdul@gmail.com
 <div align="center">
 
 **⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!**
-
+
+
 </div>
 ---
 
