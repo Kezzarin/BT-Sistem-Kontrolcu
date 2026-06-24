@@ -1,0 +1,191 @@
+<UserControl x:Class="BTAriza.Views.ArizaRehberiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#151C27" FontFamily="Segoe UI">
+    <Grid>
+        <!-- Kategori Seçim Ekranı -->
+        <ScrollViewer x:Name="KategoriEkrani" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25">
+                <TextBlock Text="Arıza Rehberi" FontSize="22" FontWeight="Bold"
+                           Foreground="#ECEFF4" Margin="0,0,0,8"/>
+                <TextBlock Text="Sorununuza uygun kategoriyi seçin, adım adım çözüm rehberine ulaşın."
+                           FontSize="13" Foreground="#8899AA" Margin="0,0,0,25"/>
+
+                <UniformGrid Columns="3" >
+                    <UniformGrid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="8"/>
+                            <Setter Property="Height" Value="130"/>
+                            <Setter Property="Background" Value="#1A2535"/>
+                            <Setter Property="Foreground" Value="#ECEFF4"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="BorderBrush" Value="#2A3A4A"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="b" Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="12">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="b" Property="Background" Value="#243348"/>
+                                                <Setter TargetName="b" Property="BorderBrush" Value="#E87B3A"/>
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter TargetName="b" Property="Background" Value="#2A3D52"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </UniformGrid.Resources>
+
+                    <Button Tag="Bilgisayar Açılmıyor" Click="Kategori_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="&#xE7E8;" FontFamily="Segoe MDL2 Assets"
+                                       FontSize="32" Foreground="#E74C3C" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Bilgisayar" HorizontalAlignment="Center" Margin="0,8,0,2"/>
+                            <TextBlock Text="Açılmıyor" HorizontalAlignment="Center" Foreground="#8899AA" FontSize="12"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Tag="Ekran Sorunu" Click="Kategori_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="&#xE7F4;" FontFamily="Segoe MDL2 Assets"
+                                       FontSize="32" Foreground="#9B59B6" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Ekran" HorizontalAlignment="Center" Margin="0,8,0,2"/>
+                            <TextBlock Text="Sorunu" HorizontalAlignment="Center" Foreground="#8899AA" FontSize="12"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Tag="İnternet Sorunu" Click="Kategori_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="&#xE909;" FontFamily="Segoe MDL2 Assets"
+                                       FontSize="32" Foreground="#3498DB" HorizontalAlignment="Center"/>
+                            <TextBlock Text="İnternet" HorizontalAlignment="Center" Margin="0,8,0,2"/>
+                            <TextBlock Text="Sorunu" HorizontalAlignment="Center" Foreground="#8899AA" FontSize="12"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Tag="Yazıcı Sorunu" Click="Kategori_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="&#xE749;" FontFamily="Segoe MDL2 Assets"
+                                       FontSize="32" Foreground="#27AE60" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Yazıcı" HorizontalAlignment="Center" Margin="0,8,0,2"/>
+                            <TextBlock Text="Sorunu" HorizontalAlignment="Center" Foreground="#8899AA" FontSize="12"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Tag="Windows Sorunu" Click="Kategori_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="&#xE782;" FontFamily="Segoe MDL2 Assets"
+                                       FontSize="32" Foreground="#1A73E8" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Windows" HorizontalAlignment="Center" Margin="0,8,0,2"/>
+                            <TextBlock Text="Sorunu" HorizontalAlignment="Center" Foreground="#8899AA" FontSize="12"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Tag="Yavaşlık" Click="Kategori_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="&#xE823;" FontFamily="Segoe MDL2 Assets"
+                                       FontSize="32" Foreground="#F39C12" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Yavaşlık" HorizontalAlignment="Center" Margin="0,8,0,2"/>
+                            <TextBlock Text="Performans" HorizontalAlignment="Center" Foreground="#8899AA" FontSize="12"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Tag="Diğer" Click="Kategori_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="&#xE946;" FontFamily="Segoe MDL2 Assets"
+                                       FontSize="32" Foreground="#8899AA" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Diğer" HorizontalAlignment="Center" Margin="0,8,0,2"/>
+                            <TextBlock Text="Sorunlar" HorizontalAlignment="Center" Foreground="#8899AA" FontSize="12"/>
+                        </StackPanel>
+                    </Button>
+                </UniformGrid>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Rehber Adımları Ekranı -->
+        <Grid x:Name="RehberEkrani" Visibility="Collapsed" Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Başlık ve Geri -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15" Spacing="12">
+                <Button Content="&#xE76B;  Geri" Style="{StaticResource SecondaryButtonStyle}"
+                        Click="Geri_Click" Padding="12,8"/>
+                <TextBlock x:Name="RehberBaslikText"
+                           FontSize="20" FontWeight="Bold"
+                           Foreground="#ECEFF4" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Progress -->
+            <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,0,0,15" Padding="20,15">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                        <TextBlock x:Name="AdimNoText" Foreground="#E87B3A"
+                                   FontSize="13" FontWeight="SemiBold"/>
+                        <TextBlock x:Name="AdimToplamText" Foreground="#8899AA" FontSize="13"/>
+                    </StackPanel>
+                    <ProgressBar x:Name="AdimProgress" Height="8"
+                                 Background="#2A3A4A" Foreground="#E87B3A"
+                                 BorderThickness="0" Maximum="100"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Adım İçeriği -->
+            <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="12" Margin="0,0,0,20">
+                        <Border Background="#E87B3A" CornerRadius="20" Width="36" Height="36">
+                            <TextBlock x:Name="AdimNumaraBadge" Text="1"
+                                       Foreground="White" FontSize="16" FontWeight="Bold"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <TextBlock x:Name="AdimBaslikText"
+                                   FontSize="16" FontWeight="SemiBold"
+                                   Foreground="#ECEFF4" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="AdimAciklamaText"
+                               FontSize="14" Foreground="#B0C0D0"
+                               TextWrapping="Wrap" LineHeight="24"
+                               Margin="48,0,0,0"/>
+
+                    <!-- Çözüldü mü banner -->
+                    <Border x:Name="TebrikBanner" Visibility="Collapsed"
+                            Background="#1A3A2A" CornerRadius="8" Padding="20"
+                            Margin="0,20,0,0">
+                        <StackPanel>
+                            <TextBlock Text="🎉 Sorun Çözüldü!" FontSize="18" FontWeight="Bold"
+                                       Foreground="#27AE60" Margin="0,0,0,8"/>
+                            <TextBlock Text="Rehber yardımıyla sorununuzu çözdünüz. İyi çalışmalar!"
+                                       Foreground="#4ACA80" FontSize="13"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Butonlar -->
+            <StackPanel Grid.Row="3" Orientation="Horizontal"
+                        HorizontalAlignment="Right" Margin="0,15,0,0" Spacing="12">
+                <Button x:Name="BtnCozulmedi" Content="✗  Çözülmedi"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Click="Cozulmedi_Click" Width="140"/>
+                <Button x:Name="BtnCozuldu" Content="✓  Çözüldü"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="Cozuldu_Click" Width="140"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,150 @@
+<UserControl x:Class="BTAriza.Views.ArizaKaydiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#151C27" FontFamily="Segoe UI">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="25" MaxWidth="800">
+            <TextBlock Text="Yeni Arıza Kaydı" FontSize="22" FontWeight="Bold"
+                       Foreground="#ECEFF4" Margin="0,0,0,25"/>
+
+            <Border Style="{StaticResource CardStyle}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Ad Soyad -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,16">
+                        <Label Content="Ad Soyad *"/>
+                        <TextBox x:Name="TxtAdSoyad" Style="{StaticResource DarkTextBoxStyle}"
+                                 PlaceholderText="Adınızı ve soyadınızı girin"/>
+                    </StackPanel>
+
+                    <!-- Departman -->
+                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="0,0,0,16">
+                        <Label Content="Departman *"/>
+                        <ComboBox x:Name="CmbDepartman" Style="{StaticResource DarkComboBoxStyle}">
+                            <ComboBoxItem Content="IT"/>
+                            <ComboBoxItem Content="Muhasebe"/>
+                            <ComboBoxItem Content="İK"/>
+                            <ComboBoxItem Content="Satış"/>
+                            <ComboBoxItem Content="Yönetim"/>
+                            <ComboBoxItem Content="Diğer"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Bilgisayar Adı -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,16">
+                        <Label Content="Bilgisayar Adı"/>
+                        <TextBox x:Name="TxtBilgisayarAdi" Style="{StaticResource DarkTextBoxStyle}"/>
+                    </StackPanel>
+
+                    <!-- Kategori -->
+                    <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,0,0,16">
+                        <Label Content="Kategori *"/>
+                        <ComboBox x:Name="CmbKategori" Style="{StaticResource DarkComboBoxStyle}">
+                            <ComboBoxItem Content="Bilgisayar Açılmıyor"/>
+                            <ComboBoxItem Content="Ekran Sorunu"/>
+                            <ComboBoxItem Content="İnternet Sorunu"/>
+                            <ComboBoxItem Content="Yazıcı Sorunu"/>
+                            <ComboBoxItem Content="Windows Sorunu"/>
+                            <ComboBoxItem Content="Yavaşlık"/>
+                            <ComboBoxItem Content="Diğer"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Açıklama -->
+                    <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,16">
+                        <Label Content="Açıklama *"/>
+                        <TextBox x:Name="TxtAciklama" Style="{StaticResource DarkTextBoxStyle}"
+                                 Height="100" TextWrapping="Wrap"
+                                 AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                 PlaceholderText="Arıza detaylarını açıklayın..."/>
+                    </StackPanel>
+
+                    <!-- Öncelik -->
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,16">
+                        <Label Content="Öncelik *"/>
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <RadioButton x:Name="RbDusuk" Content="Düşük" Foreground="#27AE60"
+                                         FontWeight="SemiBold" GroupName="Oncelik" IsChecked="True"
+                                         Checked="Oncelik_Changed"/>
+                            <RadioButton x:Name="RbOrta" Content="Orta" Foreground="#F39C12"
+                                         FontWeight="SemiBold" GroupName="Oncelik"
+                                         Checked="Oncelik_Changed"/>
+                            <RadioButton x:Name="RbYuksek" Content="Yüksek" Foreground="#E67E22"
+                                         FontWeight="SemiBold" GroupName="Oncelik"
+                                         Checked="Oncelik_Changed"/>
+                            <RadioButton x:Name="RbKritik" Content="KRİTİK" Foreground="#E74C3C"
+                                         FontWeight="Bold" GroupName="Oncelik"
+                                         Checked="Oncelik_Changed"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- İletilen Kişi -->
+                    <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,0,0,16">
+                        <Label Content="İletilecek Kişi *"/>
+                        <ComboBox x:Name="CmbIletilenKisi" Style="{StaticResource DarkComboBoxStyle}">
+                            <ComboBoxItem Content="Uzman" IsSelected="True"/>
+                            <ComboBoxItem Content="Şef"/>
+                            <ComboBoxItem Content="Müdür"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Sistem Bilgisi Toggle -->
+                    <StackPanel Grid.Row="4" Grid.Column="2" Margin="0,0,0,16">
+                        <Label Content="Sistem Bilgisi"/>
+                        <ToggleButton x:Name="TglSistemBilgisi"
+                                      Content="Sistem Bilgisi Ekle"
+                                      Checked="SistemBilgisi_Toggle"
+                                      Unchecked="SistemBilgisi_Toggle"
+                                      Height="38" Padding="12,0"
+                                      Background="#2A3A4A" Foreground="#ECEFF4"
+                                      BorderThickness="1" BorderBrush="#3A4A5A"/>
+                    </StackPanel>
+
+                    <!-- Sistem Bilgisi Alanı -->
+                    <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,16"
+                                x:Name="SistemBilgisiPanel" Visibility="Collapsed">
+                        <Label Content="Sistem Bilgisi (Otomatik)"/>
+                        <TextBox x:Name="TxtSistemBilgisi" Style="{StaticResource DarkTextBoxStyle}"
+                                 Height="80" TextWrapping="Wrap" IsReadOnly="True"
+                                 Background="#0A1015" Foreground="#7AA7C7"
+                                 FontFamily="Consolas" FontSize="11"/>
+                    </StackPanel>
+
+                    <!-- Arıza No Önizleme -->
+                    <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,20">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <TextBlock Text="Arıza No:" Foreground="#8899AA" FontSize="13"/>
+                            <TextBlock x:Name="TxtArizaNo" Text="ARZ-001"
+                                       Foreground="#E87B3A" FontSize="13" FontWeight="Bold"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Kaydet Butonu -->
+                    <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"
+                                Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12">
+                        <Button Content="Temizle" Style="{StaticResource SecondaryButtonStyle}"
+                                Click="Temizle_Click" Width="100"/>
+                        <Button Content="&#xE74E;  Kaydet" Style="{StaticResource PrimaryButtonStyle}"
+                                Click="Kaydet_Click" Width="140"
+                                FontFamily="Segoe MDL2 Assets, Segoe UI"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

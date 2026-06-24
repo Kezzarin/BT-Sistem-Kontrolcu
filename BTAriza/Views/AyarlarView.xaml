@@ -1,0 +1,138 @@
+<UserControl x:Class="BTAriza.Views.AyarlarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#151C27" FontFamily="Segoe UI">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="25" MaxWidth="700">
+            <TextBlock Text="Ayarlar" FontSize="22" FontWeight="Bold"
+                       Foreground="#ECEFF4" Margin="0,0,0,25"/>
+
+            <!-- Genel Ayarlar -->
+            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,15">
+                <StackPanel Spacing="16">
+                    <TextBlock Text="Genel Ayarlar" FontSize="15" FontWeight="SemiBold"
+                               Foreground="#E87B3A"/>
+
+                    <!-- Şirket Adı -->
+                    <StackPanel>
+                        <Label Content="Şirket Adı"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="TxtSirketAdi" Style="{StaticResource DarkTextBoxStyle}"/>
+                            <Button Grid.Column="2" Content="Kaydet"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Click="SirketAdiKaydet_Click" Width="100"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Logo -->
+                    <StackPanel>
+                        <Label Content="Şirket Logosu"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBox x:Name="TxtLogoYolu" Style="{StaticResource DarkTextBoxStyle}"
+                                     Width="350" IsReadOnly="True" PlaceholderText="Logo dosyası seçilmedi"/>
+                            <Button Content="Gözat..." Style="{StaticResource SecondaryButtonStyle}"
+                                    Click="LogoSec_Click"/>
+                            <Button Content="Temizle" Style="{StaticResource SecondaryButtonStyle}"
+                                    Click="LogoTemizle_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Personel Ayarları -->
+            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,15">
+                <StackPanel Spacing="16">
+                    <TextBlock Text="Personel İsimleri" FontSize="15" FontWeight="SemiBold"
+                               Foreground="#E87B3A"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <Label Content="Uzman"/>
+                            <TextBox x:Name="TxtUzman" Style="{StaticResource DarkTextBoxStyle}"
+                                     PlaceholderText="Uzman adı"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <Label Content="Şef"/>
+                            <TextBox x:Name="TxtSef" Style="{StaticResource DarkTextBoxStyle}"
+                                     PlaceholderText="Şef adı"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4">
+                            <Label Content="Müdür"/>
+                            <TextBox x:Name="TxtMudur" Style="{StaticResource DarkTextBoxStyle}"
+                                     PlaceholderText="Müdür adı"/>
+                        </StackPanel>
+                    </Grid>
+                    <Button Content="Personel Bilgilerini Kaydet"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            HorizontalAlignment="Left" Click="PersonelKaydet_Click"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Veritabanı -->
+            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,15">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Veritabanı" FontSize="15" FontWeight="SemiBold"
+                               Foreground="#E87B3A"/>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <TextBlock Text="Konum:" Foreground="#8899AA" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="DbYoluText" Foreground="#ECEFF4"
+                                   VerticalAlignment="Center" FontSize="13"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <Button Content="&#xE74E;  Veritabanını Yedekle"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Click="Yedekle_Click"
+                                FontFamily="Segoe MDL2 Assets, Segoe UI"/>
+                        <Button Content="&#xE8E5;  Veritabanını Geri Yükle"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Click="GeriYukle_Click"
+                                FontFamily="Segoe MDL2 Assets, Segoe UI"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Hakkında -->
+            <Border Style="{StaticResource CardStyle}">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Hakkında" FontSize="15" FontWeight="SemiBold"
+                               Foreground="#E87B3A"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Uygulama:" Foreground="#8899AA"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="BT Arıza Takip Sistemi" Foreground="#ECEFF4"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Sürüm:" Foreground="#8899AA" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="1.0.0" Foreground="#ECEFF4" Margin="0,6,0,0"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Platform:" Foreground="#8899AA" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text=".NET 8 / WPF" Foreground="#ECEFF4" Margin="0,6,0,0"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Geliştirici:" Foreground="#8899AA" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="BT Departmanı" Foreground="#ECEFF4" Margin="0,6,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

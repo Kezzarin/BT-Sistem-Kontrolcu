@@ -1,0 +1,120 @@
+<UserControl x:Class="BTAriza.Views.SurucuYonetimiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#151C27" FontFamily="Segoe UI">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Başlık + Butonlar -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20" Spacing="12">
+            <TextBlock Text="Sürücü Yönetimi" FontSize="22" FontWeight="Bold"
+                       Foreground="#ECEFF4" VerticalAlignment="Center"/>
+            <Button Content="&#xE72C;  Yenile" Style="{StaticResource SecondaryButtonStyle}"
+                    Click="Yenile_Click" FontFamily="Segoe MDL2 Assets, Segoe UI"/>
+            <Button Content="&#xE8E6;  Windows Update" Style="{StaticResource SecondaryButtonStyle}"
+                    Click="WindowsUpdate_Click" FontFamily="Segoe MDL2 Assets, Segoe UI"/>
+            <Button Content="Excel Export" Style="{StaticResource SecondaryButtonStyle}"
+                    Click="ExcelExport_Click"/>
+        </StackPanel>
+
+        <!-- Filtreler -->
+        <Border Grid.Row="1" Style="{StaticResource CardStyle}" Padding="15,12" Margin="0,0,0,15">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="Kategori:" Foreground="#8899AA" VerticalAlignment="Center"/>
+                <ComboBox x:Name="CmbKategori" Style="{StaticResource DarkComboBoxStyle}"
+                          Width="150" SelectionChanged="Filtrele">
+                    <ComboBoxItem Content="Tümü" IsSelected="True"/>
+                    <ComboBoxItem Content="Ağ"/>
+                    <ComboBoxItem Content="Görüntü"/>
+                    <ComboBoxItem Content="Ses"/>
+                    <ComboBoxItem Content="Depolama"/>
+                    <ComboBoxItem Content="USB"/>
+                    <ComboBoxItem Content="Diğer"/>
+                </ComboBox>
+                <TextBlock x:Name="ToplamSurucuText" Foreground="#8899AA" FontSize="13"
+                           VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <Border Background="#3A1A1A" CornerRadius="4" Padding="8,4" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="&#xE7BA;" FontFamily="Segoe MDL2 Assets"
+                                   Foreground="#E74C3C" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="HataliSurucuText" Foreground="#E74C3C" FontSize="12"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <!-- DataGrid -->
+        <Border Grid.Row="2" Style="{StaticResource CardStyle}" Padding="0">
+            <Grid>
+                <StackPanel x:Name="YukleniyorPanel" HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Sürücüler yükleniyor..." Foreground="#8899AA" FontSize="14"/>
+                </StackPanel>
+
+                <DataGrid x:Name="SurucuGrid"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          SelectionMode="Single"
+                          Visibility="Collapsed"
+                          MouseDoubleClick="SurucuGrid_DoubleClick">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Hatali}" Value="True">
+                                    <Setter Property="Background" Value="#3A1515"/>
+                                    <Setter Property="Foreground" Value="#FF6B6B"/>
+                                </DataTrigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#243348"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Cihaz Adı" Binding="{Binding Ad}" Width="*"/>
+                        <DataGridTextColumn Header="Sürüm" Binding="{Binding Surum}" Width="120"/>
+                        <DataGridTextColumn Header="Üretici" Binding="{Binding Uretici}" Width="150"/>
+                        <DataGridTextColumn Header="Tarih" Binding="{Binding Tarih}" Width="100"/>
+                        <DataGridTextColumn Header="Sınıf" Binding="{Binding Sinif}" Width="100"/>
+                        <DataGridTemplateColumn Header="Durum" Width="90">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="4" Padding="6,2" Margin="2"
+                                            HorizontalAlignment="Center">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Background" Value="#27AE60"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Hatali}" Value="True">
+                                                        <Setter Property="Background" Value="#E74C3C"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Foreground="White" FontSize="11" FontWeight="SemiBold">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="Normal"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Hatali}" Value="True">
+                                                            <Setter Property="Text" Value="Hatalı"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

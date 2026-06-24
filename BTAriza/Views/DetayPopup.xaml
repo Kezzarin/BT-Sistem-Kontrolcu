@@ -1,0 +1,107 @@
+<Window x:Class="BTAriza.Views.DetayPopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Arıza Detayı" Height="580" Width="580"
+        WindowStartupLocation="CenterOwner"
+        Background="#151C27"
+        FontFamily="Segoe UI"
+        ResizeMode="NoResize">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Başlık -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20" Spacing="12">
+            <TextBlock x:Name="ArizaNoText" FontSize="20" FontWeight="Bold" Foreground="#E87B3A"/>
+            <Border x:Name="OncelikBadge" CornerRadius="4" Padding="8,3" VerticalAlignment="Center">
+                <TextBlock x:Name="OncelikText" Foreground="White" FontSize="12" FontWeight="SemiBold"/>
+            </Border>
+        </StackPanel>
+
+        <!-- İçerik -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Spacing="12">
+                <Border Style="{StaticResource CardStyle}" Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,12">
+                            <TextBlock Text="Ad Soyad" Foreground="#8899AA" FontSize="11"/>
+                            <TextBlock x:Name="AdSoyadText" Foreground="#ECEFF4" FontSize="14"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,0,0,12">
+                            <TextBlock Text="Departman" Foreground="#8899AA" FontSize="11"/>
+                            <TextBlock x:Name="DepartmanText" Foreground="#ECEFF4" FontSize="14"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,12">
+                            <TextBlock Text="Bilgisayar Adı" Foreground="#8899AA" FontSize="11"/>
+                            <TextBlock x:Name="BilgisayarText" Foreground="#ECEFF4" FontSize="14"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,12">
+                            <TextBlock Text="Kategori" Foreground="#8899AA" FontSize="11"/>
+                            <TextBlock x:Name="KategoriText" Foreground="#ECEFF4" FontSize="14"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,0,12">
+                            <TextBlock Text="İletilen Kişi" Foreground="#8899AA" FontSize="11"/>
+                            <TextBlock x:Name="IletilenText" Foreground="#ECEFF4" FontSize="14"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,0,12">
+                            <TextBlock Text="Tarih" Foreground="#8899AA" FontSize="11"/>
+                            <TextBlock x:Name="TarihText" Foreground="#ECEFF4" FontSize="14"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}" Padding="15">
+                    <StackPanel>
+                        <TextBlock Text="Açıklama" Foreground="#8899AA" FontSize="11" Margin="0,0,0,6"/>
+                        <TextBlock x:Name="AciklamaText" Foreground="#ECEFF4" FontSize="13"
+                                   TextWrapping="Wrap" LineHeight="22"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Durum Güncelle -->
+                <Border Style="{StaticResource CardStyle}" Padding="15">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Durum Güncelle" Foreground="#ECEFF4"
+                                   FontSize="14" FontWeight="SemiBold"/>
+
+                        <ComboBox x:Name="CmbDurum" Style="{StaticResource DarkComboBoxStyle}"
+                                  SelectionChanged="Durum_Changed">
+                            <ComboBoxItem Content="Bekliyor"/>
+                            <ComboBoxItem Content="İşlemde"/>
+                            <ComboBoxItem Content="Çözüldü"/>
+                        </ComboBox>
+
+                        <StackPanel x:Name="CozumNotuPanel" Visibility="Collapsed">
+                            <TextBlock Text="Çözüm Notu" Foreground="#8899AA" FontSize="11" Margin="0,0,0,6"/>
+                            <TextBox x:Name="TxtCozumNotu" Style="{StaticResource DarkTextBoxStyle}"
+                                     Height="80" TextWrapping="Wrap" AcceptsReturn="True"
+                                     PlaceholderText="Sorunu nasıl çözdünüzü açıklayın..."/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Butonlar -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="0,15,0,0" Spacing="12">
+            <Button Content="Kapat" Style="{StaticResource SecondaryButtonStyle}"
+                    Click="Kapat_Click" Width="100"/>
+            <Button Content="Kaydet" Style="{StaticResource PrimaryButtonStyle}"
+                    Click="Kaydet_Click" Width="120"/>
+        </StackPanel>
+    </Grid>
+</Window>
